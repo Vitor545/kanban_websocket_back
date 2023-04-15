@@ -61,7 +61,7 @@ builder.Services.AddCors(options =>
     {
         policy.AllowAnyHeader()
             .AllowAnyMethod()
-            .WithOrigins("https://kanbanwebsocket.netlify.app/")
+            .WithOrigins("https://kanbanwebsocket.netlify.app")
             .AllowCredentials();
     });
 });
