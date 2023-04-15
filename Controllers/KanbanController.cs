@@ -9,13 +9,12 @@ namespace kanban_websocket_back.Controllers
     public class KanbanController : ControllerBase
     {
         [HttpGet]
-        [Route("userId/{id:int}")]
-        public async Task<ActionResult<List<Kanban>>> GetKanban(int id, [FromServices] postgresContext context
+        public async Task<ActionResult<List<Kanban>>> GetKanban([FromServices] postgresContext context
       )
         {
             try
             {
-                var kanban = await context.Kanbans.Where(x => x.UserId == id).Include(x => x.Boards).ThenInclude(x => x.Leads.OrderBy(x => x.IndexNumber)).AsNoTracking().FirstOrDefaultAsync();
+                var kanban = await context.Kanbans.Where(x => x.Id == 1).Include(x => x.Boards).ThenInclude(x => x.Leads.OrderBy(x => x.IndexNumber)).AsNoTracking().FirstOrDefaultAsync();
                 if (kanban == null)
                     return NotFound();
                 return Ok(kanban);

@@ -33,18 +33,11 @@ namespace kanban_websocket_back.Controllers
                 };
                 context.Users.Add(user);
                 await context.SaveChangesAsync();
-                Kanban kanban = new()
-                {
-                    KanbanName = "Initial Kanban",
-                    UserId = user.Id,
-                };
-                context.Kanbans.Add(kanban);
-                await context.SaveChangesAsync();
                 Board board = new()
                 {
                     BoardName = "Initial Board",
                     UserId = user.Id,
-                    KanbanId = kanban.Id,
+                    KanbanId = 1,
                     Color = "#CD8DE5",
                 };
                 context.Boards.Add(board);
